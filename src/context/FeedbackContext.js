@@ -25,7 +25,7 @@ export const FeedbackProvider = ({ children }) => {
 
   // Add feedback
   const addFeedback = async (newFeedback) => {
-    const response = await fetch("/feedback", {
+    const response = await fetch(`${server}/feedback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
