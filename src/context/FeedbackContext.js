@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
-const server = "https://preeminent-pony-822556.netlify.app";
 export const FeedbackProvider = ({ children }) => {
+  const server = "https://preeminent-pony-822556.netlify.app";
   const [isLoading, setIsLoading] = useState(true);
   const [feedback, setFeedback] = useState([]);
 
@@ -17,9 +17,7 @@ export const FeedbackProvider = ({ children }) => {
 
   // fetch feedback
   const fetchFeedback = async () => {
-    const response = await fetch(
-      `https://preeminent-pony-822556.netlify.app/feedback?_sort=id&_order=desc`
-    );
+    const response = await fetch(`${server}/feedback?_sort=id&_order=desc`);
     const data = await response.json();
     setFeedback(data);
     setIsLoading(false);
