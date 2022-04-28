@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
-const server = "https://preeminent-pony-822556";
+const server = "https://preeminent-pony-822556.netlify.app";
 export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [feedback, setFeedback] = useState([]);
