@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
@@ -18,18 +17,25 @@ export const FeedbackProvider = ({ children }) => {
 
   // fetch feedback
   const fetchFeedback = async () => {
-    const response = await fetch(
-      "http://localhost:5000/feedback?_sort=id&_order=asc"
-    );
+    const response = await fetch("/feedback?_sort=id&_order=desc");
     const data = await response.json();
     setFeedback(data);
     setIsLoading(false);
   };
 
   // Add feedback
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidv4();
-    setFeedback([newFeedback, ...feedback]);
+  const addFeedback = async (newFeedback) => {
+    const response = await fetch("/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newFeedback),
+    });
+
+    const data = await response.json();
+
+    setFeedback([data, ...feedback]);
   };
 
   // Delete feedback
