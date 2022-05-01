@@ -32,7 +32,7 @@ export const FeedbackProvider = ({ children }) => {
       },
       body: JSON.stringify(newFeedback),
     });
-    console.log(response);
+    console.log(response.json());
 
     const data = await response.json();
 
