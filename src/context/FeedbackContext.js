@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
 export const FeedbackProvider = ({ children }) => {
-  const server = "https://preeminent-pony-822556.netlify.app";
+  const server = "https://react-feedback-app-theta.vercel.app/";
   const [isLoading, setIsLoading] = useState(true);
   const [feedback, setFeedback] = useState([]);
 
